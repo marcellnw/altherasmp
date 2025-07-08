@@ -2,37 +2,41 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lore Season 5 - AltheraSMP</title>
+  <title>AltheraSMP - Menu Informasi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+    }
+    html, body {
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
       background-size: cover;
-      color: #ffd700;
-    }
-
-    html {
-      scroll-behavior: smooth;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
     header {
-      background: rgba(0,0,0,0.8);
-      padding: 16px 24px;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 14px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: relative;
+      animation: fadeInDown 1s ease-out;
     }
 
     header h1 {
       font-family: 'Cinzel', serif;
-      margin: 0;
       font-size: 1.6rem;
+      color: gold;
+      margin: 0;
       text-shadow: 0 0 6px gold;
     }
 
@@ -42,197 +46,186 @@
       cursor: pointer;
     }
 
-    .dropdown {
-      position: absolute;
-      right: 24px;
-      top: 70px;
-      background: rgba(0,0,0,0.85);
-      border: 1px solid gold;
-      border-radius: 8px;
-      padding: 10px;
-      z-index: 999;
-      text-align: left;
-    }
-
-    .dropdown a {
-      display: block;
-      color: #ffd700;
-      text-decoration: none;
-      padding: 6px 12px;
-      font-size: 15px;
-      transition: background 0.2s;
-    }
-
-    .dropdown a:hover {
-      background: rgba(255,255,255,0.1);
-      border-radius: 5px;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .container {
+    main {
+      flex: 1;
       padding: 20px;
-      max-width: 800px;
-      margin: auto;
-      animation: fadeInUp 1s ease-in-out;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     h2 {
       font-family: 'Cinzel', serif;
+      color: gold;
+      text-shadow: 0 0 6px gold;
+      margin-top: 10px;
       text-align: center;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
-    p {
-      font-size: 16px;
-      line-height: 1.7;
-      text-align: justify;
-      color: #f0e68c;
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 800px;
     }
 
-    .back-button {
-      display: block;
-      margin: 30px auto;
-      padding: 12px 24px;
-      background: rgba(0,0,0,0.6);
-      border: 2px solid gold;
+    .menu-button {
+      padding: 16px;
+      background-color: rgba(0, 0, 0, 0.6);
       color: gold;
       font-size: 16px;
+      border: 2px solid gold;
       border-radius: 10px;
-      font-family: 'Cinzel', serif;
       cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      font-family: 'Cinzel', serif;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+      opacity: 0;
+      animation: slideUp 0.6s forwards;
     }
 
-    .back-button:hover {
+    .menu-button:nth-child(1) { animation-delay: 0.3s; }
+    .menu-button:nth-child(2) { animation-delay: 0.4s; }
+    .menu-button:nth-child(3) { animation-delay: 0.5s; }
+    .menu-button:nth-child(4) { animation-delay: 0.6s; }
+    .menu-button:nth-child(5) { animation-delay: 0.7s; }
+    .menu-button:nth-child(6) { animation-delay: 0.8s; }
+
+    .menu-button:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 10px gold;
+      box-shadow: 0 0 8px gold;
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px 10px;
       text-align: center;
-      padding: 20px;
-      background: rgba(0,0,0,0.85);
-      color: #888;
-      margin-top: 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-}
+      color: #ccc;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .socials {
+      margin-top: 10px;
+    }
 
     .socials a {
-      color: #ffd700;
-      text-decoration: none;
-      font-size: 24px;
+      color: gold;
       margin: 0 10px;
-      transition: transform 0.3s ease, color 0.3s ease;
+      font-size: 22px;
+      text-decoration: none;
+      transition: transform 0.2s;
     }
 
     .socials a:hover {
       transform: scale(1.2);
-      color: #fffacd;
+      color: white;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
-    @media (max-width: 768px) {
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      from {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @media (max-width: 600px) {
       header h1 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
-
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      p {
-        font-size: 15px;
-      }
-
-      .dropdown {
-        right: 16px;
-        top: 64px;
+      .menu-icon {
+        font-size: 20px;
       }
     }
   </style>
 </head>
 <body>
 
-<!-- 🔊 Audio -->
-<audio id="bg-music" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/GENSHIN_MUSIC_BY_EPICNESS____NO_COPYRIGHT(128k).mp3" autoplay loop></audio>
-<audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
+  <!-- 🔊 Efek Klik -->
+  <audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
 
-<!-- 🌐 Header -->
-<header>
-  <h1>AltheraSMP</h1>
-  <div class="menu-icon"><i class="fas fa-ellipsis-v"></i></div>
+  <!-- 🎼 Musik Fantasy Acak -->
+  <audio id="music1" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%203.mp3" preload="auto" loop></audio>
+  <audio id="music2" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%202.mp3" preload="auto" loop></audio>
+  <audio id="music3" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Music%20fantasy.mp3" preload="auto" loop></audio>
 
-  <!-- Dropdown Menu -->
-  <nav id="dropdownMenu" class="dropdown hidden">
-    <a href="index.html">🏠 Halaman Utama</a>
-    <a href="lore.html">📜 Lore Season 5</a>
-    <a href="page2.html">📂 Informasi Server</a>
-    <a href="rank.html">💎 Pemesanan Rank</a>
-  </nav>
-</header>
+  <!-- 🔺 Header -->
+  <header>
+    <h1>AltheraSMP</h1>
+    <div class="menu-icon"><i class="fas fa-bars"></i></div>
+  </header>
 
-<!-- 📖 Lore Konten -->
-<div class="container">
-  <h2>Lore Season 5: Viking × Pirates - **The Final Tide**</h2>
-  <p>
-    Di dunia luas AltheraSMP Season 5, dua kekuatan besar telah lama bersembunyi dalam bayang-bayang lautan dan pegunungan es: Kerajaan Viking Utara dan Armada Bajak Laut Selatan.
-  </p>
-  <p>
-    Masing-masing wilayah menaungi dua fraksi yang saling berseberangan: <strong>Stormborn</strong> dan <strong>Frostaxe</strong> dari tanah Viking; <strong>Crimson Corsairs</strong> dan <strong>Black Tides</strong> dari lautan Bajak Laut.
-  </p>
-  <p>
-    Dalam ketegangan diplomatik yang tak pernah usai, satu artefak kuno – “Heart of Leviathan” – dikabarkan muncul kembali. Kini seluruh dunia bersiap menyambut konflik epik yang akan menentukan penguasa sejati Althera.
-  </p>
-  <p>
-    Siapa yang akan berdiri terakhir saat <em>gelombang terakhir</em> menghantam daratan? Bergabunglah, bertempurlah, dan bentuk aliansi. Musim ini akan menjadi saksi perang paling megah sepanjang sejarah server.
-  </p>
+  <!-- 🌟 Konten Utama -->
+  <main>
+    <h2>Menu Informasi Server</h2>
+    <div class="menu-grid">
+      <button class="menu-button" onclick="navigate('lore.html')">📜 Alur Cerita S5</button>
+      <button class="menu-button" onclick="navigate('rules.html')">📋 Peraturan Server</button>
+      <button class="menu-button" onclick="navigate('cara.bermain.html')">🎮 Cara Bermain di Server</button>
+      <button class="menu-button" onclick="navigate('ip.html')">🌐 IP & Port Server</button>
+      <button class="menu-button" onclick="navigate('benefit.html')">💎 Benefit Rank Spesial</button>
+      <button class="menu-button" onclick="navigate('rank.html')">🛒 Pemesanan Rank</button>
+    </div>
+  </main>
 
-  <button class="back-button" onclick="playClick(); window.location.href='index.html';">⬅ Kembali ke Halaman Utama</button>
-</div>
+  <!-- 🔻 Footer -->
+  <footer>
+    <p>© 2025 AltheraSMP. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/queennnzme" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@queennnzme" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@queennnzme" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </footer>
 
-<!-- 🔚 Footer -->
-<footer>
-  <p>© 2025 AltheraSMP. All rights reserved.</p>
-  <div class="socials">
-    <a href="https://www.instagram.com/queennnzme" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://youtube.com/@queennnzme" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.tiktok.com/@queennnzme" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-  </div>
-</footer>
-
-<!-- 🧠 Script -->
-<script>
-  const menuIcon = document.querySelector('.menu-icon');
-  const dropdownMenu = document.getElementById('dropdownMenu');
-  const clickSound = document.getElementById('click-sound');
-
-  menuIcon.addEventListener('click', () => {
-    dropdownMenu.classList.toggle('hidden');
-    playClick();
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
-      dropdownMenu.classList.add('hidden');
+  <!-- 📜 Script -->
+  <script>
+    function navigate(link) {
+      const sound = document.getElementById("click-sound");
+      sound.volume = 1;
+      sound.play();
+      setTimeout(() => {
+        window.location.href = link;
+      }, 200);
     }
-  });
 
-  function playClick() {
-    clickSound.volume = 0.6;
-    clickSound.play();
-  }
-</script>
+    function playRandomMusic() {
+      const musicList = [
+        document.getElementById("music1"),
+        document.getElementById("music2"),
+        document.getElementById("music3")
+      ];
+      const randomIndex = Math.floor(Math.random() * musicList.length);
+      const selectedMusic = musicList[randomIndex];
+      selectedMusic.volume = 0.5;
+      selectedMusic.play();
+    }
 
+    window.onload = () => {
+      playRandomMusic();
+    };
+  </script>
 </body>
 </html>

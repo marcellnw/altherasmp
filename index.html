@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AltheraSMP - Pemesanan Rank</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+/* 🌌 Gaya dasar halaman */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_080553.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #ffd700;
+}
+
+/* 💡 Wrapper untuk dorong footer ke bawah */
+.wrapper {
+  min-height: calc(100vh - 160px); /* Sesuaikan tinggi footer */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔳 Header atas */
+header {
+  background: #000;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 🪙 Judul */
+header h1 {
+  font-family: 'Cinzel', serif;
+  color: #ffd700;
+  margin: 0;
+  font-size: 1.8rem;
+  text-shadow: 0 0 6px #ffd700;
+}
+
+/* ☰ Ikon menu */
+.menu-icon {
+  font-size: 24px;
+  color: #ffd700;
+  cursor: pointer;
+  display: none;
+}
+
+/* 📦 Kontainer utama */
+.container {
+  flex: 1;
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* 🎯 Judul bagian */
+h2 {
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  margin-top: 40px;
+  font-size: 1.5rem;
+}
+
+/* 🔘 Tombol utama landing */
+.center-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.main-button {
+  background: #222;
+  border: 2px solid #ffd700;
+  color: #ffd700;
+  padding: 20px 40px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #ffd700;
+}
+
+/* 🫥 Hidden element */
+.hidden {
+  display: none;
+}
+
+/* 🧱 Grid tombol rank */
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+/* 🎮 Tombol Rank dan Kirim */
+.rank-button,
+.order-button {
+  padding: 12px;
+  background: #222;
+  border: 1px solid #ffd700;
+  border-radius: 8px;
+  color: #ffd700;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.rank-button:hover,
+.order-button:hover {
+  background: #333;
+  transform: scale(1.02);
+}
+
+/* 📝 Form input */
+.form-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+input[type="text"],
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ffd700;
+  background: #000;
+  color: #ffd700;
+  border-radius: 6px;
+}
+
+/* 📤 Upload Box */
+.bukti-box {
+  border: 2px dashed #ffd700;
+  padding: 20px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.bukti-box img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* 🎉 Pesan sukses */
+.thankyou {
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+  color: #ccc;
+}
+
+/* 🔚 Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #000;
+  color: #888;
+}
+
+/* 🌐 Sosial media */
+.socials a {
+  color: #ffd700;
+  text-decoration: none;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.socials a:hover {
+  transform: scale(1.2);
+  color: #fffacd;
+}
+
+/* 📱 RESPONSIVE: Mobile */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.4rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .main-button {
+    padding: 16px 28px;
+    font-size: 16px;
+  }
+
+  .rank-button,
+  .order-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  input[type="text"],
+  select,
+  input[type="file"] {
+    font-size: 14px;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .rank-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+  }
+
+  .container {
+    padding: 16px;
+  }
+
+  .bukti-box {
+    padding: 16px;
+  }
+}
+
+/* 💻 RESPONSIVE: Extra-large screen */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1100px;
+  }
+
+  .main-button {
+    font-size: 24px;
+  }
+
+  .rank-button,
+  .order-button {
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  min-height: calc(100vh - 160px); /* 160px = tinggi footer & thankyou */
+  display: flex;
+  flex-direction: column;
+}
+</style>
+<body>
+<!-- Header -->
+<header>
+  <h1>AltheraSMP</h1>
+  <div class="menu-icon"><i class="fas fa-bars"></i></div>
+</header>
+
+<!-- Halaman Awal -->
+<div id="landingPage" class="center-btn">
+  <button class="main-button" onclick="showOrderPage()">✶ Lihat Menu Rank ✶</button>
+</div>
+
+<!-- Halaman Pemesanan -->
+<div id="orderPage" class="container hidden">
+  <h2>MENU URUTAN RANK</h2>
+  <div class="rank-grid">
+    <button class="rank-button" onclick="showRankDetail('Noob', 'Rp. 5.000 🦩')">RANK NOOB</button>
+    <button class="rank-button" onclick="showRankDetail('Stone', 'Rp. 10.000 🐩')">RANK STONE</button>
+    <button class="rank-button" onclick="showRankDetail('Gold', 'Rp. 15.000 🐕')">RANK GOLD</button>
+    <button class="rank-button" onclick="showRankDetail('Iron', 'Rp. 20.000 🐐')">RANK IRON</button>
+    <button class="rank-button" onclick="showRankDetail('Diamond', 'Rp. 30.000 🦙')">RANK DIAMOND</button>
+    <button class="rank-button" onclick="showRankDetail('End', 'Rp. 80.000 🐘')">RANK END</button>
+    <button class="rank-button" onclick="showRankDetail('Fire', 'Rp. 60.000 🦍')">RANK FIRE</button>
+    <button class="rank-button" onclick="showRankDetail('Legend', 'Rp. 45.000 🐖')">RANK LEGEND</button>
+    <button class="rank-button" onclick="showRankDetail('Nether', 'Rp. 100.000 🦬')">RANK NETHER</button>
+    <button class="rank-button" onclick="showRankDetail('Space', 'Rp. 150.000 🐆')">RANK SPACE</button>
+    <button class="rank-button" onclick="showRankDetail('VIP', 'Rp. 200.000 🐅')">RANK VIP</button>
+  </div>
+
+  <h2>Pemesanan Rank</h2>
+  <form id="rankOrderForm">
+    <div class="form-group">
+      <label>Gamertag:</label>
+      <input type="text" name="gamertag" required />
+    </div>
+    <div class="form-group">
+    <label>Nomor Pemesan (WhatsApp/HP):</label>
+    <input type="text" name="nomor" required placeholder="Contoh: 081234567890" />
+  </div>
+
+    <div class="form-group">
+      <label>Pilih Rank:</label>
+      <select name="rank" required>
+        <option value="">-- Pilih --</option>
+        <option value="NOOB">Noob 🦩 (Rp. 5.000)</option>
+        <option value="STONE">Stone 🐩 (Rp. 10.000)</option>
+        <option value="GOLD">Gold 🐕 (Rp. 15.000)</option>
+        <option value="IRON">Iron 🐐 (Rp. 20.000)</option>
+        <option value="DIAMOND">Diamond 🦙 (Rp. 30.000)</option>
+        <option value="LEGEND">Legend 🐖 (Rp. 45.000)</option>
+        <option value="FIRE">Fire 🦍 (Rp. 60.000)</option>
+        <option value="END">End 🐘 (Rp. 80.000)</option>
+        <option value="NETHER">Nether 🦬 (Rp. 100.000)</option>
+        <option value="SPACE">Space 🐆 (Rp. 150.000)</option>
+        <option value="VIP">VIP 🐅 (Rp. 200.000)</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Pilih Pembayaran:</label>
+      <select name="pembayaran" id="metodePembayaran" required onchange="showQRISIfSelected()">
+        <option value="">-- Pilih --</option>
+        <option value="DANA (083159084210)">Dana (083159084210)</option>
+        <option value="GOPAY (083159084210)">Gopay (083159084210)</option>
+        <option value="OVO (083159084210)">OVO (083159084210)</option>
+        <option value="QRIS">QRIS</option>
+      </select>
+    </div>
+
+    <div id="qrisContainer" class="form-group hidden">
+      <label>Scan QRIS:</label>
+      <div class="bukti-box">
+        <img src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/IMG-20250603-WA0145.jpg" alt="QRIS Payment">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Lampirkan Bukti Transfer:</label>
+      <div class="bukti-box">
+        <input type="file" name="bukti" accept="image/*" required />
+      </div>
+    </div>
+
+    <!-- Tombol utama -->
+    <button class="order-button" type="submit">Kirim Pembelian</button>
+    <!-- Tombol WhatsApp -->
+    <button class="order-button" type="button" onclick="sendToWhatsApp()">Kirim via WhatsApp</button>
+  </form>
+
+  <div class="thankyou">Thank you for ordering.</div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>© 2025 AltheraSMP. All rights reserved.</p>
+  <div class="socials">
+    <a href="https://www.instagram.com/queennnzme?igsh=MTE3bHR2ejRzM3lraw==" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://youtube.com/@queennnzme?si=hQIkRdS5xtIGBpJV" target="_blank" title="YouTube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.tiktok.com/@queennnzme?_t=ZS-8xqPxTtgx5l&_r=1" target="_blank" title="TikTok">
+      <i class="fab fa-tiktok"></i>
+    </a>
+  </div>
+</footer>
+
+
+<!-- Script -->
+<script>
+  function showOrderPage() {
+    document.getElementById("landingPage").classList.add("hidden");
+    document.getElementById("orderPage").classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showQRISIfSelected() {
+    const metode = document.getElementById("metodePembayaran").value;
+    const qrisBox = document.getElementById("qrisContainer");
+    qrisBox.classList.toggle("hidden", metode !== "QRIS");
+  }
+function showRankDetail(rank, harga) {
+  let benefitText = "";
+
+switch (rank.toLowerCase()) { case "noob": benefitText = ` Harga: Rp. 5.000 🦩
+
+Benefit Fitur Rank 「 NOOB 」 • +feed • +clear
+
+Benefit Item Rank 「 NOOB 」 • 16 roti • 1 totem • 16 iron ingot`; break;
+
+case "stone":
+  benefitText = `
+Harga: Rp. 10.000
+
+Benefit Fitur Rank 「 STONE 」 • +feed • +clear
+
+Benefit Item Rank 「 STONE 」 • 20 daging • 2 totem • 20 iron ingot • 20 xp bootle`; break;
+
+case "gold":
+  benefitText = `
+Harga: Rp. 15.000 🐕
+
+Benefit Fitur Rank 「 GOLD 」 • +feed • +clear • +heal
+
+Benefit Item Rank 「 GOLD 」 • 25 daging • 3 totem • 25 iron ingot • 25 xp bootle • 2 telur villager`; break;
+
+case "iron":
+  benefitText = `
+Harga: Rp. 20.000
+
+Benefit Fitur Rank 「 IRON 」 • +feed • +clear • +heal • +night vision
+
+Benefit Item Rank 「 IRON 」 • 32 daging • 4 totem • 32 iron ingot • 32 xp bootle • 2 telur villager • 2 telur sapi`; break;
+
+case "diamond":
+  benefitText = `
+Harga: Rp. 30.000
+
+Benefit Fitur Rank 「 DIAMOND 」 • +fly • +feed • +clear • +heal • +night vision
+
+Benefit Item Rank 「 DIAMOND 」 • 40 daging • 5 totem • 40 xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 10 diamond • 10 iron ingot`; break;
+
+case "legend":
+  benefitText = `
+Harga: Rp. 45.000
+
+Benefit Fitur Rank 「 LEGENDS 」 • +fly • +clear • +heal • +feed • +night vision • +day • Money 25k
+
+Benefit Item Rank 「 LEGENDS 」 • 48 daging • 6 totem • 2 stak xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 1 trident • 16 diamond • 10 iron ingot`; break;
+
+case "fire":
+  benefitText = `
+Harga: Rp. 60.000
+
+Benefit Fitur Rank 「 FIRE 」 • +fly • unlimited resource (warp) • +feed • +heal • +day • +clear • +weather • +night vision • Money Rp50k
+
+Benefit Item Rank 「 FIRE 」 • 1 stak daging • 7 totem • 2 stak 32 xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 1 trident • 1 topi turtle • 20 diamond • 10 iron ingot • 10 emerald`; break;
+
+case "end":
+  benefitText = `
+Harga: Rp. 80.000
+
+Benefit Fitur Rank 「 END 」 • +fly • unlimited resource (warp) • +feed • +heal • +clear • +night vision • +day • +weather • +enderchest • Money Rp100k
+
+Benefit Item Rank 「 END 」 • 1 stak daging • 8 totem • 3 stak xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 1 trident • 1 topi turtle • 25 diamond • 10 iron ingot • 10 emerald • 10 gold ingot • 1 shulker`; break;
+
+case "nether":
+  benefitText = `
+Harga: Rp. 100.000
+
+Benefit Fitur Rank 「 NETHER 」 • +fly • unlimited resource (warp) • +feed • +heal • +clear • +night vision • +day • +weather • +enderchest • +haste • Money Rp300k
+
+Benefit Item Rank 「 NETHER 」 • 1 stak daging • 9 totem • 3 stak 32 xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 1 trident • 1 topi turtle • 32 diamond • 10 iron ingot • 10 emerald • 10 gold ingot • 1 stak enderpearl • 1 shulker`; break;
+
+case "space":
+  benefitText = `
+Harga: Rp. 150.000
+
+Benefit Fitur Rank 「 SPACE 」 • +fly • unlimited resource (warp) • +feed • +heal • +clear • +night vision • +day • +weather • +enderchest • +haste • +vanish • Money Rp500k
+
+Benefit Item Rank 「 SPACE 」 • 1 stak daging • 10 totem • 4 stak xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 1 trident • 1 topi turtle • 20 diamond • 10 iron ingot • 10 emerald • 10 gold ingot • 1 stak enderpearl • 1 shulker • 1 set full armor dan tools iron no enchant`; break;
+
+case "vip":
+  benefitText = `
+Harga: Rp. 200.000
+
+Benefit Fitur Rank 「 VIP 」 • +fly • unlimited resource (warp) • +feed • +heal • +clear • +night vision • +day • +weather • +enderchest • +haste • +vanish • +xp • Money Rp1m
+
+Benefit Item Rank 「 VIP 」 • 1 stak daging • 10 totem • 5 stak xp bootle • 2 telur villager • 2 telur sapi • 2 telur domba • 1 trident • 1 topi turtle • 16 diamond • 10 iron ingot • 10 emerald • 10 gold ingot • 1 stak enderpearl • 1 shulker • 1 set full armor dan tools diamond no enchanted • 4 pasang telur mob spawner dan 4 tempat telur spawner`; break;
+
+    // Tambahkan case lain untuk setiap rank lainnya seperti STONE, DIAMOND, dll.
+
+    default:
+      benefitText = `Belum ada detail untuk RANK ${rank.toUpperCase()}.\n\nHarga: ${harga}`;
+  }
+
+  alert(`Benefit dari RANK ${rank.toUpperCase()}\n${benefitText}`);
+}
+
+  const form = document.getElementById("rankOrderForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+const fields = [
+  { name: "Gamertag", value: data.get("gamertag") },
+  { name: "Nomor Pemesan", value: data.get("nomor") },
+  { name: "Beli Rank", value: data.get("rank") },
+  { name: "Pembayaran", value: data.get("pembayaran") }
+];
+
+    const webhook = "https://discord.com/api/webhooks/1387401415831588984/ZPK_TEvECuB6TEiY3bkRkL4p2xqK9IHEEugoYtNbg_loZ4SK-2n2RFvktxYsrHKGrLDl";
+    const imageFile = data.get("bukti");
+
+    if (!imageFile || !imageFile.name || !imageFile.type.startsWith("image/")) {
+      alert("Harap unggah bukti transfer gambar.");
+      return;
+    }
+
+    const buffer = await imageFile.arrayBuffer();
+    const blob = new Blob([buffer], { type: imageFile.type });
+    const fd = new FormData();
+    fd.append("file", blob, imageFile.name);
+    fd.append("payload_json", JSON.stringify({
+      username: "AltheraSMP Rank Order",
+      embeds: [{
+        title: "🔥 Pemesanan Rank Baru",
+        description: "Berikut detail pemesanan:",
+        color: 16766720,
+        fields: fields,
+        image: { url: "attachment://" + imageFile.name }
+      }]
+    }));
+
+    try {
+      await fetch(webhook, { method: "POST", body: fd });
+      alert("Pemesanan berhasil dikirim!");
+      form.reset();
+      document.getElementById("qrisContainer").classList.add("hidden");
+      sendToWhatsApp(data);
+    } catch (err) {
+      console.error(err);
+      alert("Gagal mengirim pemesanan.");
+    }
+  });
+
+  function sendToWhatsApp(formData) {
+    const data = formData || new FormData(document.getElementById("rankOrderForm"));
+    const gamertag = data.get("gamertag") || "-";
+    const nomor = data.get("nomor") || "-";
+    const rank = data.get("rank") || "-";
+    const bayar = data.get("pembayaran") || "-";
+
+const pesan = `Halo Admin AltheraSMP 👋%0A
+Saya ingin melakukan pembelian rank:%0A
+• Gamertag: ${gamertag}%0A
+• Nomor: ${nomor}%0A
+• Rank: ${rank}%0A
+• Pembayaran: ${bayar}%0A
+%0ASaya sudah upload bukti transfer via website.%0AMohon dicek ya 🙏`;
+
+    const wa = "https://wa.me/6281323146137?text=" + encodeURIComponent(pesan);
+    window.open(wa, "_blank");
+  }
+</script>
+</body>
+</html>

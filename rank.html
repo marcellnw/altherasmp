@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemesanan Rank - AltheraSMP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffd700;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    header {
+      background: rgba(0,0,0,0.85);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      margin: 0;
+      font-size: 1.6rem;
+      text-shadow: 0 0 6px gold;
+    }
+
+    .rank-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      padding: 30px 20px;
+    }
+
+    .rank-btn {
+      background: rgba(0, 0, 0, 0.6);
+      border: 2px solid gold;
+      padding: 10px;
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      border-radius: 10px;
+      color: #ffd700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.3s;
+    }
+
+    .rank-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px gold;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0,0,0,0.92);
+      border: 2px solid gold;
+      border-radius: 12px;
+      padding: 20px;
+      color: #ffd700;
+      z-index: 999;
+      max-width: 90%;
+      max-height: 90%;
+      overflow-y: auto;
+    }
+
+    .popup-content {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .popup-section {
+      flex: 1 1 220px;
+    }
+
+    .popup-section h4 {
+      margin-bottom: 8px;
+      text-decoration: underline;
+      color: #fffacd;
+    }
+
+    .popup h3 { margin-top: 0; }
+    .popup ul { padding-left: 20px; }
+
+    .popup button {
+      margin: 10px 6px 0 0;
+      padding: 10px 16px;
+      border: none;
+      background: #222;
+      color: gold;
+      font-family: 'Cinzel', serif;
+      border: 1px solid gold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      z-index: 998;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      background: rgba(0,0,0,0.85);
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .socials a {
+      color: #ffd700;
+      font-size: 20px;
+      margin: 0 8px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+
+    .socials a:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+<audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
+
+<header>
+  <h1>AltheraSMP</h1>
+</header>
+
+<main>
+  <div class="rank-buttons">
+    <button class="rank-btn" onclick="showPopup('Noob')">Rank Noob</button>
+    <button class="rank-btn" onclick="showPopup('Stone')">Rank Stone</button>
+    <button class="rank-btn" onclick="showPopup('Gold')">Rank Gold</button>
+    <button class="rank-btn" onclick="showPopup('Iron')">Rank Iron</button>
+    <button class="rank-btn" onclick="showPopup('Diamond')">Rank Diamond</button>
+    <button class="rank-btn" onclick="showPopup('Legend')">Rank Legend</button>
+    <button class="rank-btn" onclick="showPopup('Fire')">Rank Fire</button>
+    <button class="rank-btn" onclick="showPopup('End')">Rank End</button>
+    <button class="rank-btn" onclick="showPopup('Nether')">Rank Nether</button>
+    <button class="rank-btn" onclick="showPopup('Space')">Rank Space</button>
+    <button class="rank-btn" onclick="showPopup('VIP')">Rank VIP</button>
+  </div>
+
+  <div style="text-align: center; margin-top: 10px;">
+    <button class="rank-btn" onclick="window.location.href='page2.html'">← Kembali ke Menu</button>
+  </div>
+
+  <div id="overlay" onclick="closePopup()"></div>
+  <div id="popup" class="popup"></div>
+</main>
+
+<footer>
+  <p>© 2025 AltheraSMP. All rights reserved.</p>
+  <div class="socials" style="margin-top: 10px;">
+    <a href="https://www.instagram.com/queennnzme" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@queennnzme" target="_blank"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@queennnzme" target="_blank"><i class="fab fa-tiktok"></i></a>
+  </div>
+</footer>
+
+<script>
+  const popupData = {
+    Noob: {
+      price: 'Rp5.000',
+      features: ['+feed', '+clear'],
+      items: ['16 roti', '1 totem', '16 iron ingot']
+    },
+    Stone: {
+      price: 'Rp10.000',
+      features: ['+feed', '+clear'],
+      items: ['20 daging', '2 totem', '20 iron ingot', '20 xp bottle']
+    },
+    Gold: {
+      price: 'Rp15.000',
+      features: ['+feed', '+clear', '+heal'],
+      items: ['25 daging', '3 totem', '25 iron ingot', '25 xp bottle', '2 telur villager']
+    },
+    Iron: {
+      price: 'Rp20.000',
+      features: ['+feed', '+clear', '+heal', '+night vision'],
+      items: ['32 daging', '4 totem', '32 iron ingot', '32 xp bottle', '2 telur villager', '2 telur sapi']
+    },
+    Diamond: {
+      price: 'Rp30.000',
+      features: ['+fly', '+feed', '+clear', '+heal', '+night vision'],
+      items: ['40 daging', '5 totem', '40 xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '10 diamond', '10 iron ingot']
+    },
+    Legend: {
+      price: 'Rp45.000',
+      features: ['+fly', '+clear', '+heal', '+feed', '+night vision', '+day', 'Money 25k'],
+      items: ['48 daging', '6 totem', '2 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '16 diamond', '10 iron ingot']
+    },
+    Fire: {
+      price: 'Rp60.000',
+      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+day', '+clear', '+weather', '+night vision', 'Money 50k'],
+      items: ['1 stak daging', '7 totem', '2 stak 32 xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '20 diamond', '10 iron ingot', '10 emerald']
+    },
+    End: {
+      price: 'Rp80.000',
+      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', 'Money 100k'],
+      items: ['1 stak daging', '8 totem', '3 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '25 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 shulker']
+    },
+    Nether: {
+      price: 'Rp100.000',
+      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', '+haste', 'Money 300k'],
+      items: ['1 stak daging', '9 totem', '3 stak 32 xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '32 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 stak enderpearl', '1 shulker']
+    },
+    Space: {
+      price: 'Rp150.000',
+      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', '+haste', '+vanish', 'Money 500k'],
+      items: ['1 stak daging', '10 totem', '4 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '20 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 stak enderpearl', '1 shulker', '1 set armor/tools iron no enchant']
+    },
+    VIP: {
+      price: 'Rp200.000',
+      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', '+haste', '+vanish', '+xp', 'Money 1M'],
+      items: ['1 stak daging', '10 totem', '5 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '16 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 stak enderpearl', '1 shulker', '1 set armor/tools diamond no enchant', '4 pasang telur mob spawner']
+    }
+  };
+
+  function showPopup(rank) {
+    document.getElementById('click-sound').play();
+    const data = popupData[rank];
+    let html = `<h3>💎 Rank ${rank}</h3><p>Harga: <strong>${data.price}</strong></p>
+    <div class="popup-content">
+      <div class="popup-section"><h4>⚔️ Benefit Fitur</h4><ul>`;
+    data.features.forEach(f => html += `<li>${f}</li>`);
+    html += `</ul></div><div class="popup-section"><h4>🎁 Benefit Item</h4><ul>`;
+    data.items.forEach(i => html += `<li>${i}</li>`);
+    html += `</ul></div></div>
+      <button onclick="closePopup()">Tutup</button>
+      <button onclick="location.href='form.html?rank=${rank}'">Pesan Sekarang</button>`;
+
+    document.getElementById('popup').innerHTML = html;
+    document.getElementById('popup').style.display = 'block';
+    document.getElementById('overlay').style.display = 'block';
+  }
+
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+  }
+</script>
+</body>
+</html>

@@ -218,24 +218,33 @@ input[type="file"] {
   </div>
 </footer>
 <audio id="musicPlayer" autoplay></audio>
+
 <script>
-  // Daftar lagu fantasy
+  // Daftar lagu fantasy (versi online)
   const musicList = [
-    "audio/fantasy.mp3",
-    "audio/fantasy2.mp3",
-    "audio/fantasy3.mp3"
+    "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy.mp3",
+    "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%202.mp3",
+    "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%203.mp3"
   ];
+
   const player = document.getElementById('musicPlayer');
   let current = 0;
+
   function playNextMusic() {
     player.src = musicList[current];
-    player.play().catch(() => {});
+    player.play().catch(() => {
+      // Optional: handle autoplay blocking in some browsers
+      console.log("Autoplay prevented. User interaction required.");
+    });
   }
+
   player.addEventListener("ended", () => {
     current = (current + 1) % musicList.length;
     playNextMusic();
   });
+
   playNextMusic();
+</script>
 
   // Daftar harga rank
   const hargaRank = {

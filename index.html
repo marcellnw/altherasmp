@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>AltheraSMP - Season 5</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2d2706f4c.js" crossorigin="anonymous"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(0,0,0,0.6);
+      padding: 14px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: gold;
+      margin: 0;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      color: gold;
+      cursor: pointer;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .logo {
+      margin-top: 40px;
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    .logo img {
+      width: 180px;
+      height: auto;
+      filter: drop-shadow(0 0 10px gold);
+    }
+
+    .subtitle {
+      font-family: 'Cinzel', serif;
+      color: gold;
+      margin-top: 20px;
+      font-size: 22px;
+      text-shadow: 0 0 8px #ffd700;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    .main-button {
+      margin: 16px 8px;
+      padding: 18px 36px;
+      background-color: rgba(0,0,0,0.6);
+      color: gold;
+      font-size: 18px;
+      border: 2px solid gold;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .main-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px gold;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 16px;
+      text-align: center;
+      color: #ccc;
+    }
+
+    .socials a {
+      color: gold;
+      margin: 0 10px;
+      font-size: 22px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+
+    .socials a:hover {
+      transform: scale(1.2);
+      color: white;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.04);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.2rem;
+      }
+
+      .menu-icon {
+        font-size: 20px;
+      }
+
+      .main-button {
+        font-size: 16px;
+        padding: 14px 24px;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+
+      .subtitle {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🔊 Musik & Efek Suara -->
+  <audio id="bg-music" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/GENSHIN_MUSIC_BY_EPICNESS____NO_COPYRIGHT(128k).mp3" autoplay loop></audio>
+  <audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
+
+  <!-- 🔺 Header -->
+  <header>
+    <h1>AltheraSMP</h1>
+    <div class="menu-icon"><i class="fas fa-bars"></i></div>
+  </header>
+
+  <!-- 🌟 Konten Utama -->
+  <main>
+    <div class="logo">
+      <img src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/1751951656318.png" alt="Logo AltheraSMP">
+    </div>
+
+    <div class="subtitle">Season 5: Viking x Pirates</div>
+
+    <div>
+      <button class="main-button" onclick="playClick(); window.location.href='page2.html';">✶ Masuk ke Informasi ✶</button>
+      <button class="main-button" onclick="playClick(); window.location.href='lore.html';">⚔️ Lihat Alur Cerita ⚔️</button>
+    </div>
+  </main>
+
+  <!-- 🔻 Footer -->
+  <footer>
+    <p style="margin-bottom: 10px;">© 2025 AltheraSMP. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/queennnzme" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@queennnzme" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@queennnzme" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </footer>
+
+  <!-- 📜 Script -->
+  <script>
+    window.onload = () => {
+      document.getElementById("bg-music").volume = 0.5;
+    };
+
+    function playClick() {
+      const clickSound = document.getElementById("click-sound");
+      clickSound.volume = 1;
+      clickSound.play();
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lore Season 5 - AltheraSMP</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffd700;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: rgba(0,0,0,0.8);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Cinzel', serif;
+      margin: 0;
+      font-size: 1.6rem;
+      text-shadow: 0 0 6px gold;
+    }
+
+    .menu-icon {
+      font-size: 24px;
+      color: gold;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 24px;
+      top: 70px;
+      background: rgba(0,0,0,0.85);
+      border: 1px solid gold;
+      border-radius: 8px;
+      padding: 10px;
+      z-index: 999;
+      text-align: left;
+    }
+
+    .dropdown a {
+      display: block;
+      color: #ffd700;
+      text-decoration: none;
+      padding: 6px 12px;
+      font-size: 15px;
+      transition: background 0.2s;
+    }
+
+    .dropdown a:hover {
+      background: rgba(255,255,255,0.1);
+      border-radius: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      animation: fadeInUp 1s ease-in-out;
+    }
+
+    h2 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      text-align: justify;
+      color: #f0e68c;
+    }
+
+    .back-button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background: rgba(0,0,0,0.6);
+      border: 2px solid gold;
+      color: gold;
+      font-size: 16px;
+      border-radius: 10px;
+      font-family: 'Cinzel', serif;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    .back-button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px gold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.85);
+      color: #888;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+}
+
+    .socials a {
+      color: #ffd700;
+      text-decoration: none;
+      font-size: 24px;
+      margin: 0 10px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .socials a:hover {
+      transform: scale(1.2);
+      color: #fffacd;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.3rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 15px;
+      }
+
+      .dropdown {
+        right: 16px;
+        top: 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔊 Audio -->
+<audio id="bg-music" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/GENSHIN_MUSIC_BY_EPICNESS____NO_COPYRIGHT(128k).mp3" autoplay loop></audio>
+<audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
+
+<!-- 🌐 Header -->
+<header>
+  <h1>AltheraSMP</h1>
+  <div class="menu-icon"><i class="fas fa-ellipsis-v"></i></div>
+
+  <!-- Dropdown Menu -->
+  <nav id="dropdownMenu" class="dropdown hidden">
+    <a href="index.html">🏠 Halaman Utama</a>
+    <a href="lore.html">📜 Lore Season 5</a>
+    <a href="page2.html">📂 Informasi Server</a>
+    <a href="rank.html">💎 Pemesanan Rank</a>
+  </nav>
+</header>
+
+<!-- 📖 Lore Konten -->
+<div class="container">
+  <h2>Lore Season 5: Viking × Pirates - **The Final Tide**</h2>
+  <p>
+    Di dunia luas AltheraSMP Season 5, dua kekuatan besar telah lama bersembunyi dalam bayang-bayang lautan dan pegunungan es: Kerajaan Viking Utara dan Armada Bajak Laut Selatan.
+  </p>
+  <p>
+    Masing-masing wilayah menaungi dua fraksi yang saling berseberangan: <strong>Stormborn</strong> dan <strong>Frostaxe</strong> dari tanah Viking; <strong>Crimson Corsairs</strong> dan <strong>Black Tides</strong> dari lautan Bajak Laut.
+  </p>
+  <p>
+    Dalam ketegangan diplomatik yang tak pernah usai, satu artefak kuno – “Heart of Leviathan” – dikabarkan muncul kembali. Kini seluruh dunia bersiap menyambut konflik epik yang akan menentukan penguasa sejati Althera.
+  </p>
+  <p>
+    Siapa yang akan berdiri terakhir saat <em>gelombang terakhir</em> menghantam daratan? Bergabunglah, bertempurlah, dan bentuk aliansi. Musim ini akan menjadi saksi perang paling megah sepanjang sejarah server.
+  </p>
+
+  <button class="back-button" onclick="playClick(); window.location.href='index.html';">⬅ Kembali ke Halaman Utama</button>
+</div>
+
+<!-- 🔚 Footer -->
+<footer>
+  <p>© 2025 AltheraSMP. All rights reserved.</p>
+  <div class="socials">
+    <a href="https://www.instagram.com/queennnzme" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://youtube.com/@queennnzme" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@queennnzme" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+  </div>
+</footer>
+
+<!-- 🧠 Script -->
+<script>
+  const menuIcon = document.querySelector('.menu-icon');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const clickSound = document.getElementById('click-sound');
+
+  menuIcon.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('hidden');
+    playClick();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!menuIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+      dropdownMenu.classList.add('hidden');
+    }
+  });
+
+  function playClick() {
+    clickSound.volume = 0.6;
+    clickSound.play();
+  }
+</script>
+
+</body>
+</html>

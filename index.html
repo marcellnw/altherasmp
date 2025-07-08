@@ -168,9 +168,13 @@
 </head>
 <body>
 
-  <!-- 🔊 Musik & Efek Suara -->
-  <audio id="bg-music" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/GENSHIN_MUSIC_BY_EPICNESS____NO_COPYRIGHT(128k).mp3" autoplay loop></audio>
+  <!-- 🔊 Efek Suara Klik -->
   <audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
+
+  <!-- 🎼 Musik Fantasy Acak -->
+  <audio id="music1" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%203.mp3" preload="auto" loop></audio>
+  <audio id="music2" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%202.mp3" preload="auto" loop></audio>
+  <audio id="music3" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Music%20fantasy.mp3" preload="auto" loop></audio>
 
   <!-- 🔺 Header -->
   <header>
@@ -204,15 +208,27 @@
 
   <!-- 📜 Script -->
   <script>
-    window.onload = () => {
-      document.getElementById("bg-music").volume = 0.5;
-    };
-
     function playClick() {
       const clickSound = document.getElementById("click-sound");
       clickSound.volume = 1;
       clickSound.play();
     }
+
+    function playRandomMusic() {
+      const musicList = [
+        document.getElementById("music1"),
+        document.getElementById("music2"),
+        document.getElementById("music3")
+      ];
+      const randomIndex = Math.floor(Math.random() * musicList.length);
+      const chosen = musicList[randomIndex];
+      chosen.volume = 0.5;
+      chosen.play();
+    }
+
+    window.onload = () => {
+      playRandomMusic();
+    };
   </script>
 </body>
 </html>

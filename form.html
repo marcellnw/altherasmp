@@ -1,3 +1,4 @@
+<!-- Simpan sebagai index.html atau sesuai kebutuhan -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -212,7 +213,7 @@
       <button type="submit" id="submitBtn">Kirim Pesanan</button>
     </form>
 
-    <button class="back-btn">← Kembali ke Rank</button>
+    <button class="back-btn" onclick="window.location.href='rank.html'">← Kembali ke Rank</button>
   </div>
 </main>
 
@@ -225,10 +226,6 @@
   </div>
 </footer>
 
-<!-- 🔊 Musik dan Efek Klik -->
-<audio id="bg-music" autoplay loop></audio>
-<audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
-
 <script>
   const hargaRank = {
     Noob: "Rp5.000", Stone: "Rp10.000", Gold: "Rp15.000",
@@ -236,15 +233,6 @@
     Fire: "Rp60.000", End: "Rp80.000", Nether: "Rp100.000",
     Space: "Rp150.000", VIP: "Rp200.000"
   };
-
-  const musicList = [
-    "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy.mp3",
-    "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%202.mp3",
-    "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%203.mp3"
-  ];
-  const bgMusic = document.getElementById("bg-music");
-  bgMusic.src = musicList[Math.floor(Math.random() * musicList.length)];
-  bgMusic.volume = 0.5;
 
   function tampilkanHarga() {
     const rank = document.getElementById('rank').value;
@@ -273,16 +261,6 @@
       };
       reader.readAsDataURL(file);
     }
-  });
-
-  const clickSound = document.getElementById("click-sound");
-  document.querySelector(".back-btn").addEventListener("click", function (e) {
-    e.preventDefault();
-    clickSound.volume = 0.6;
-    clickSound.play();
-    setTimeout(() => {
-      window.location.href = "rank.html";
-    }, 300);
   });
 
   document.getElementById('orderForm').addEventListener('submit', async function (e) {
@@ -345,5 +323,6 @@
     window.location.href = "index.html";
   });
 </script>
+
 </body>
-  </html>
+</html>

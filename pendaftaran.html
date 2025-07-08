@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pendaftaran AltheraSMP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    header {
+      background: rgba(0, 0, 0, 0.75);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+    }
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.4rem;
+      color: gold;
+      margin: 0;
+      text-shadow: 0 0 6px gold;
+    }
+    .menu-icon {
+      font-size: 20px;
+      color: gold;
+      cursor: pointer;
+      position: relative;
+    }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 24px;
+      top: 50px;
+      background: rgba(0, 0, 0, 0.9);
+      border: 1px solid gold;
+      border-radius: 6px;
+      min-width: 160px;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease;
+    }
+    .dropdown-menu a {
+      color: gold;
+      padding: 10px 16px;
+      display: block;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+    }
+    .dropdown-menu a:hover {
+      background: rgba(255, 215, 0, 0.2);
+      color: white;
+    }
+    .container {
+      background: rgba(0,0,0,0.75);
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid gold;
+    }
+    h2 {
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      color: gold;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+    form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .form-group {
+      flex: 1 1 45%;
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 4px;
+      color: gold;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+    input, select, textarea {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid gold;
+      padding: 8px;
+      color: #fff;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+    button {
+      flex-basis: 100%;
+      margin-top: 15px;
+      background: gold;
+      color: #000;
+      border: none;
+      padding: 10px;
+      font-family: 'Cinzel', serif;
+      font-weight: bold;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #fff;
+      color: gold;
+    }
+    footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 10px;
+      text-align: center;
+      color: #ccc;
+      margin-top: 30px;
+    }
+    .socials {
+      margin-top: 8px;
+    }
+    .socials a {
+      color: gold;
+      margin: 0 8px;
+      font-size: 18px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .socials a:hover {
+      transform: scale(1.2);
+      color: white;
+    }
+    @media (max-width: 768px) {
+      .form-group {
+        flex: 1 1 100%;
+      }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🎵 Musik Latar -->
+  <audio id="bg-music" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Music%20fantasy.mp3" preload="auto" loop></audio>
+
+  <!-- 🔊 Click Sound -->
+  <audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/click.m4a" preload="auto"></audio>
+
+  <header>
+    <h1>AltheraSMP</h1>
+    <div class="menu-icon" onclick="handleClick(() => toggleMenu())">
+      <i class="fas fa-ellipsis-v"></i>
+      <div class="dropdown-menu" id="dropdownMenu">
+        <a href="index.html" onclick="handleClick()">← Kembali ke Menu</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h2>Form Pendaftaran Member</h2>
+    <form id="regForm">
+      <div class="form-group">
+        <label>Nama / Dipanggil</label>
+        <input type="text" name="nama" required>
+      </div>
+      <div class="form-group">
+        <label>Gamertag di In-Game</label>
+        <input type="text" name="gamertag" required>
+      </div>
+      <div class="form-group">
+        <label>Nama Discord</label>
+        <input type="text" name="discord" required>
+      </div>
+      <div class="form-group">
+        <label>Nama TikTok</label>
+        <input type="text" name="tiktok">
+      </div>
+      <div class="form-group">
+        <label>No WhatsApp</label>
+        <input type="text" name="wa">
+      </div>
+      <div class="form-group">
+        <label>Alasan Join Server</label>
+        <textarea name="alasan"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Tahu Server dari Mana?</label>
+        <input type="text" name="sumber">
+      </div>
+      <div class="form-group">
+        <label>Ingin Berada di Wilayah</label>
+        <select name="wilayah" required>
+          <option value="">-- Pilih Wilayah --</option>
+          <option value="Pirates">Pirates</option>
+          <option value="Viking">Viking</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mau Buat Clan Sendiri atau Ditentukan Admin?</label>
+        <select name="clan" required>
+          <option value="">-- Pilih --</option>
+          <option value="Buat Sendiri">Buat Sendiri</option>
+          <option value="Ditentukan Admin">Ditentukan Admin</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Kirim Bukti Follow TikTok Server</label>
+        <input type="file" name="bukti" accept="image/*" required>
+      </div>
+      <button type="submit">Kirim Pendaftaran</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>© 2025 AltheraSMP. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://www.instagram.com/queennnzme" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com/@queennnzme" target="_blank"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@queennnzme" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("dropdownMenu");
+      menu.style.display = (menu.style.display === "block") ? "none" : "block";
+    }
+
+    window.onload = function() {
+      const music = document.getElementById("bg-music");
+      music.volume = 0.4;
+      music.play().catch(() => {
+        console.log("User gesture diperlukan untuk autoplay.");
+      });
+
+      // Add click listener to all buttons and anchors
+      document.querySelectorAll("button, .dropdown-menu a").forEach(el => {
+        el.addEventListener("click", () => {
+          playClick();
+        });
+      });
+    };
+
+    function playClick() {
+      const clickSound = document.getElementById("click-sound");
+      clickSound.currentTime = 0;
+      clickSound.play();
+    }
+
+    function handleClick(callback) {
+      playClick();
+      if (callback) callback();
+    }
+
+    const webhookAll = "https://discord.com/api/webhooks/1392076742285594725/7ICxa7Dv7Gx_V-7ORLcXRlcWOGlvBUgYbhC-WTLz17cAllaOOKuJIVzhj-FHGVfCOdHv";
+    const webhookGT = "https://discord.com/api/webhooks/1392076704314556437/6UEJ_iHnQKgEfGJqki39VD8VgUu--sQmfzdClDC864XJuOLzo8CW97EYAsxi8fp-q0T1";
+
+    document.getElementById("regForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      playClick();
+
+      const form = e.target;
+      const data = new FormData(form);
+
+      const nama = data.get("nama");
+      const gamertag = data.get("gamertag");
+      const discord = data.get("discord");
+      const tiktok = data.get("tiktok");
+      const wa = data.get("wa");
+      const alasan = data.get("alasan");
+      const sumber = data.get("sumber");
+      const wilayah = data.get("wilayah");
+      const clan = data.get("clan");
+      const buktiFile = data.get("bukti");
+
+      let buktiBase64 = "";
+      if (buktiFile && buktiFile.size > 0) {
+        buktiBase64 = await toBase64(buktiFile);
+      }
+
+      const payloadAll = {
+        username: "Pendaftaran AltheraSMP",
+        embeds: [{
+          title: "Pendaftaran Member AltheraSMP",
+          color: 16766720,
+          fields: [
+            { name: "Nama / Dipanggil", value: nama || "-", inline: false },
+            { name: "Gamertag", value: gamertag || "-", inline: false },
+            { name: "Discord", value: discord || "-", inline: false },
+            { name: "TikTok", value: tiktok || "-", inline: false },
+            { name: "No WhatsApp", value: wa || "-", inline: false },
+            { name: "Alasan Join", value: alasan || "-", inline: false },
+            { name: "Tahu Server Dari", value: sumber || "-", inline: false },
+            { name: "Wilayah", value: wilayah || "-", inline: false },
+            { name: "Clan", value: clan || "-", inline: false }
+          ],
+          image: buktiBase64 ? { url: `attachment://${buktiFile.name}` } : undefined,
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      const payloadGT = {
+        username: "Gamertag AltheraSMP",
+        content: `Gamertag Pendaftar: **${gamertag || "-"}**`
+      };
+
+      let files = [];
+      if (buktiBase64) {
+        files.push({
+          name: buktiFile.name,
+          file: buktiBase64
+        });
+      }
+
+      await sendToDiscord(webhookAll, payloadAll, files);
+      await fetch(webhookGT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payloadGT)
+      });
+
+      alert("✅ Pendaftaran berhasil dikirim!");
+      form.reset();
+    });
+
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function sendToDiscord(webhook, payload, files) {
+      if (files.length === 0) {
+        await fetch(webhook, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        const formData = new FormData();
+        formData.append("payload_json", JSON.stringify(payload));
+        files.forEach((f, i) => {
+          const byteChars = atob(f.file);
+          const byteNumbers = new Array(byteChars.length);
+          for (let j = 0; j < byteChars.length; j++) {
+            byteNumbers[j] = byteChars.charCodeAt(j);
+          }
+          const byteArray = new Uint8Array(byteNumbers);
+          const blob = new Blob([byteArray], { type: "image/png" });
+          formData.append(`files[${i}]`, blob, f.name);
+        });
+        await fetch(webhook, { method: "POST", body: formData });
+      }
+    }
+  </script>
+</body>
+</html>

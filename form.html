@@ -1,3 +1,4 @@
+<!-- Simpan sebagai index.html atau sesuai kebutuhan -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -8,60 +9,68 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
   <style>
     html, body {
-      height: 100%;
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
       background-size: cover;
       color: #ffd700;
-      display: flex;
-      flex-direction: column;
     }
-
-    header {
-      background: rgba(0,0,0,0.85);
+    header, footer {
+      background: rgba(0,0,0,0.8);
       padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-align: center;
     }
-
     header h1 {
       font-family: 'Cinzel', serif;
       margin: 0;
       font-size: 1.6rem;
       text-shadow: 0 0 6px gold;
     }
-
+    footer {
+      font-size: 14px;
+      color: #aaa;
+    }
+    .socials a {
+      color: #ffd700;
+      font-size: 20px;
+      margin: 0 8px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    .socials a:hover {
+      transform: scale(1.2);
+    }
     main {
-      flex: 1;
-      padding: 20px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      justify-content: center;
+      padding: 40px 16px;
     }
-
-    .container {
-      max-width: 500px;
+    .form-box {
       width: 100%;
-      background: rgba(0,0,0,0.75);
-      padding: 30px;
-      border-radius: 15px;
+      max-width: 500px;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 24px;
+      border-radius: 16px;
       border: 2px solid gold;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      animation: fadeInGlow 1.2s ease;
     }
-
+    @keyframes fadeInGlow {
+      0% { opacity: 0; transform: translateY(20px); box-shadow: 0 0 0 transparent; }
+      100% { opacity: 1; transform: translateY(0); box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); }
+    }
     h2 {
       font-family: 'Cinzel', serif;
       text-align: center;
       margin-bottom: 20px;
+      font-size: 24px;
     }
-
     label {
       display: block;
       margin-top: 15px;
       font-weight: bold;
     }
-
     input, select {
       width: 100%;
       padding: 10px;
@@ -71,80 +80,70 @@
       background: rgba(0, 0, 0, 0.5);
       color: #ffd700;
     }
-
+    #harga-rank {
+      margin-top: 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
     .qris-img, .preview-img {
       display: none;
       margin-top: 10px;
       text-align: center;
+      overflow: hidden;
     }
-
     .qris-img img, .preview-img img {
-      max-width: 100%;
-      border-radius: 10px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
       border: 2px solid gold;
+      object-fit: cover;
     }
-
     button {
       margin-top: 25px;
       width: 100%;
       padding: 12px;
-      border: none;
       background-color: #000;
       color: gold;
       border-radius: 10px;
       font-family: 'Cinzel', serif;
       border: 2px solid gold;
       cursor: pointer;
+      transition: all 0.3s;
+      animation: fadeInGlow 1.5s ease;
     }
-
     button:hover {
       transform: scale(1.04);
       box-shadow: 0 0 10px gold;
     }
-
-    #harga-rank {
-      margin-top: 6px;
-      font-weight: bold;
-      font-size: 14px;
-    }
-
-    .back-btn {
-      margin-top: 20px;
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid gold;
-      padding: 10px;
-      font-family: 'Cinzel', serif;
-      font-size: 14px;
-      border-radius: 10px;
+    .copy-btn {
+      margin-top: 8px;
+      font-size: 13px;
+      background: none;
       color: #ffd700;
+      border: 1px solid #ffd700;
+      border-radius: 6px;
+      padding: 5px 10px;
       cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.3s;
-      width: 100%;
     }
-
-    .back-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px gold;
+    .copy-btn:hover {
+      background-color: gold;
+      color: black;
     }
-
-    footer {
-      text-align: center;
-      padding: 30px 10px;
-      background: rgba(0,0,0,0.85);
-      font-size: 14px;
-      color: #aaa;
+    .back-btn {
+      margin-top: 16px;
+      background: rgba(0,0,0,0.6);
     }
-
-    .socials a {
-      color: #ffd700;
-      font-size: 20px;
-      margin: 0 8px;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-
-    .socials a:hover {
-      transform: scale(1.2);
+    @media (max-width: 500px) {
+      .form-box {
+        padding: 20px;
+        margin: 0 12px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      input, select {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
@@ -155,7 +154,7 @@
 </header>
 
 <main>
-  <div class="container">
+  <div class="form-box">
     <h2>Form Pemesanan Rank</h2>
     <form id="orderForm">
       <label for="gamertag">Gamertag</label>
@@ -194,6 +193,10 @@
         <option value="QRIS">QRIS</option>
       </select>
 
+      <div id="copyDanaWrap" style="display: none;">
+        <button type="button" class="copy-btn" onclick="salinDana()">📋 Salin Nomor Dana</button>
+      </div>
+
       <div class="qris-img" id="qrisImg">
         <p>Scan QRIS berikut:</p>
         <img src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/IMG-20250603-WA0145.jpg" alt="QRIS">
@@ -201,20 +204,22 @@
 
       <label for="bukti">Upload Bukti Transfer</label>
       <input type="file" id="bukti" accept="image/*" required>
+
       <div class="preview-img" id="preview">
         <p>Preview:</p>
         <img id="previewImage">
       </div>
 
-      <button type="submit">Kirim Pesanan</button>
+      <button type="submit" id="submitBtn">Kirim Pesanan</button>
     </form>
+
     <button class="back-btn" onclick="window.location.href='rank.html'">← Kembali ke Rank</button>
   </div>
 </main>
 
 <footer>
   <p>© 2025 AltheraSMP. All rights reserved.</p>
-  <div class="socials" style="margin-top: 10px;">
+  <div class="socials">
     <a href="https://www.instagram.com/queennnzme" target="_blank"><i class="fab fa-instagram"></i></a>
     <a href="https://youtube.com/@queennnzme" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.tiktok.com/@queennnzme" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -237,6 +242,13 @@
   function toggleQris() {
     const pembayaran = document.getElementById('pembayaran').value;
     document.getElementById('qrisImg').style.display = pembayaran === 'QRIS' ? 'block' : 'none';
+    document.getElementById('copyDanaWrap').style.display = pembayaran.includes('Dana') ? 'block' : 'none';
+  }
+
+  function salinDana() {
+    navigator.clipboard.writeText('083159084210').then(() => {
+      alert("✅ Nomor Dana disalin!");
+    });
   }
 
   document.getElementById('bukti').addEventListener('change', function () {
@@ -253,6 +265,10 @@
 
   document.getElementById('orderForm').addEventListener('submit', async function (e) {
     e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = "⏳ Mengirim...";
+    submitBtn.disabled = true;
+
     const nama = document.getElementById('nama').value;
     const gamertag = document.getElementById('gamertag').value;
     const nomor = document.getElementById('nomor').value;
@@ -261,20 +277,26 @@
     const buktiFile = document.getElementById('bukti').files[0];
 
     const webhook = 'https://discord.com/api/webhooks/1387401415831588984/ZPK_TEvECuB6TEiY3bkRkL4p2xqK9IHEEugoYtNbg_loZ4SK-2n2RFvktxYsrHKGrLDl';
-
     const uploadForm = new FormData();
     uploadForm.append('file', buktiFile);
 
-    const uploadRes = await fetch(webhook, { method: 'POST', body: uploadForm });
+    const uploadRes = await fetch(webhook + '?wait=true', { method: 'POST', body: uploadForm });
     const resData = await uploadRes.json();
     const attachmentUrl = resData.attachments?.[0]?.url;
+
     if (!attachmentUrl) {
       alert('❌ Gagal mengunggah bukti transfer!');
+      submitBtn.textContent = "Kirim Pesanan";
+      submitBtn.disabled = false;
       return;
     }
 
     const embedPayload = {
       username: "AltheraSMP Bot",
+      content: "<@755389102307934302> <@1235463607794274354>",
+      allowed_mentions: {
+        users: ["755389102307934302", "1235463607794274354"]
+      },
       embeds: [{
         title: "📥 Pemesanan Rank AltheraSMP",
         color: 16766720,
@@ -301,5 +323,6 @@
     window.location.href = "index.html";
   });
 </script>
+
 </body>
 </html>

@@ -209,6 +209,7 @@ input[type="file"] {
     <button class="back-btn" onclick="window.location.href='rank.html'">← Kembali ke Rank</button>
   </div>
 </main>
+!-- Footer -->
 <footer>
   <p>© 2025 AltheraSMP. All rights reserved.</p>
   <div class="socials">
@@ -217,10 +218,12 @@ input[type="file"] {
     <a href="https://www.tiktok.com/@queennnzme" target="_blank"><i class="fab fa-tiktok"></i></a>
   </div>
 </footer>
+
+<!-- Music player -->
 <audio id="musicPlayer" autoplay></audio>
 
 <script>
-  // Daftar lagu fantasy (versi online)
+  // Music List
   const musicList = [
     "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy.mp3",
     "https://raw.githubusercontent.com/marcellnw/altherasmp/main/music%20fantasy%202.mp3",
@@ -233,7 +236,6 @@ input[type="file"] {
   function playNextMusic() {
     player.src = musicList[current];
     player.play().catch(() => {
-      // Optional: handle autoplay blocking in some browsers
       console.log("Autoplay prevented. User interaction required.");
     });
   }
@@ -245,35 +247,38 @@ input[type="file"] {
 
   playNextMusic();
 
-  // Daftar harga rank
+  // Harga Rank
   const hargaRank = {
-    Noob: "Rp5.000", Stone: "Rp10.000", Gold: "Rp15.000",
-    Iron: "Rp20.000", Diamond: "Rp30.000", Legend: "Rp45.000",
-    Fire: "Rp60.000", End: "Rp80.000", Nether: "Rp100.000",
-    Space: "Rp150.000", VIP: "Rp200.000"
+    Noob: "Rp5.000",
+    Stone: "Rp10.000",
+    Gold: "Rp15.000",
+    Iron: "Rp20.000",
+    Diamond: "Rp30.000",
+    Legend: "Rp45.000",
+    Fire: "Rp60.000",
+    End: "Rp80.000",
+    Nether: "Rp100.000",
+    Space: "Rp150.000",
+    VIP: "Rp200.000"
   };
 
-  // Update harga saat pilih rank
   function tampilkanHarga() {
     const rank = document.getElementById('rank').value;
     document.getElementById('harga-rank').textContent = rank ? `Harga: ${hargaRank[rank]}` : "Harga: -";
   }
 
-  // Tampilkan QRIS atau salin Dana
   function toggleQris() {
     const pembayaran = document.getElementById('pembayaran').value;
-    document.getElementById('qrisImg').style.display = pembayaran === 'QRIS' ? 'block' : 'none';
+    document.getElementById('qrisImgWrap').style.display = pembayaran === 'QRIS' ? 'block' : 'none';
     document.getElementById('copyDanaWrap').style.display = pembayaran.includes('Dana') ? 'block' : 'none';
   }
 
-  // Copy nomor Dana
   function salinDana() {
     navigator.clipboard.writeText('083159084210').then(() => {
       alert("✅ Nomor Dana disalin!");
     });
   }
 
-  // Preview bukti transfer
   document.getElementById('bukti').addEventListener('change', function () {
     const file = this.files[0];
     if (file) {
@@ -286,7 +291,6 @@ input[type="file"] {
     }
   });
 
-  // Kirim ke Discord Webhook
   document.getElementById('orderForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     const submitBtn = document.getElementById('submitBtn');
@@ -300,11 +304,25 @@ input[type="file"] {
     const pembayaran = document.getElementById('pembayaran').value;
     const buktiFile = document.getElementById('bukti').files[0];
 
+    if (!buktiFile) {
+      alert("❌ Mohon upload bukti transfer!");
+      submitBtn.textContent = "Kirim Pesanan";
+      submitBtn.disabled = false;
+      return;
+    }
+
     const webhook = 'https://discord.com/api/webhooks/1387401415831588984/ZPK_TEvECuB6TEiY3bkRkL4p2xqK9IHEEugoYtNbg_loZ4SK-2n2RFvktxYsrHKGrLDl';
     const uploadForm = new FormData();
     uploadForm.append('file', buktiFile);
 
     const uploadRes = await fetch(webhook, { method: 'POST', body: uploadForm });
+    if (!uploadRes.ok) {
+      alert('❌ Gagal mengunggah ke Discord!');
+      submitBtn.textContent = "Kirim Pesanan";
+      submitBtn.disabled = false;
+      return;
+    }
+
     const resData = await uploadRes.json();
     const attachmentUrl = resData.attachments?.[0]?.url;
 
@@ -345,5 +363,7 @@ input[type="file"] {
     window.location.href = "index.html";
   });
 </script>
+
 </body>
 </html>
+

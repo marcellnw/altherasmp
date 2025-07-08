@@ -1,133 +1,36 @@
+<!-- Simpan sebagai index.html atau sesuai kebutuhan -->
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pemesanan Rank - AltheraSMP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Pemesanan Rank - AltheraSMP</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
   <style>
     html, body {
-      height: 100%;
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: url('https://raw.githubusercontent.com/marcellnw/altherasmp/main/20250708_120619.png') no-repeat center center fixed;
       background-size: cover;
       color: #ffd700;
-      display: flex;
-      flex-direction: column;
     }
-
-    main {
-      flex: 1;
-    }
-
-    header {
-      background: rgba(0,0,0,0.85);
+    header, footer {
+      background: rgba(0,0,0,0.8);
       padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      text-align: center;
     }
-
     header h1 {
       font-family: 'Cinzel', serif;
       margin: 0;
       font-size: 1.6rem;
       text-shadow: 0 0 6px gold;
     }
-
-    .rank-buttons {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      padding: 30px 20px;
-    }
-
-    .rank-btn {
-      background: rgba(0, 0, 0, 0.6);
-      border: 2px solid gold;
-      padding: 10px;
-      font-family: 'Cinzel', serif;
-      font-size: 14px;
-      border-radius: 10px;
-      color: #ffd700;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
-
-    .rank-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 10px gold;
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0,0,0,0.92);
-      border: 2px solid gold;
-      border-radius: 12px;
-      padding: 20px;
-      color: #ffd700;
-      z-index: 999;
-      max-width: 90%;
-      max-height: 90%;
-      overflow-y: auto;
-    }
-
-    .popup-content {
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    .popup-section {
-      flex: 1 1 220px;
-    }
-
-    .popup-section h4 {
-      margin-bottom: 8px;
-      text-decoration: underline;
-      color: #fffacd;
-    }
-
-    .popup h3 { margin-top: 0; }
-    .popup ul { padding-left: 20px; }
-
-    .popup button {
-      margin: 10px 6px 0 0;
-      padding: 10px 16px;
-      border: none;
-      background: #222;
-      color: gold;
-      font-family: 'Cinzel', serif;
-      border: 1px solid gold;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    #overlay {
-      display: none;
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      z-index: 998;
-    }
-
     footer {
-      text-align: center;
-      padding: 30px 10px;
-      background: rgba(0,0,0,0.85);
       font-size: 14px;
       color: #aaa;
     }
-
     .socials a {
       color: #ffd700;
       font-size: 20px;
@@ -135,45 +38,188 @@
       text-decoration: none;
       transition: transform 0.3s;
     }
-
     .socials a:hover {
       transform: scale(1.2);
+    }
+    main {
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+    }
+    .form-box {
+      width: 100%;
+      max-width: 500px;
+      background: rgba(0, 0, 0, 0.75);
+      padding: 24px;
+      border-radius: 16px;
+      border: 2px solid gold;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+      animation: fadeInGlow 1.2s ease;
+    }
+    @keyframes fadeInGlow {
+      0% { opacity: 0; transform: translateY(20px); box-shadow: 0 0 0 transparent; }
+      100% { opacity: 1; transform: translateY(0); box-shadow: 0 0 15px rgba(255, 215, 0, 0.3); }
+    }
+    h2 {
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 8px;
+      border: 1px solid #ffd700;
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffd700;
+    }
+    #harga-rank {
+      margin-top: 6px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .qris-img, .preview-img {
+      display: none;
+      margin-top: 10px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .qris-img img, .preview-img img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid gold;
+      object-fit: cover;
+    }
+    button {
+      margin-top: 25px;
+      width: 100%;
+      padding: 12px;
+      background-color: #000;
+      color: gold;
+      border-radius: 10px;
+      font-family: 'Cinzel', serif;
+      border: 2px solid gold;
+      cursor: pointer;
+      transition: all 0.3s;
+      animation: fadeInGlow 1.5s ease;
+    }
+    button:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 10px gold;
+    }
+    .copy-btn {
+      margin-top: 8px;
+      font-size: 13px;
+      background: none;
+      color: #ffd700;
+      border: 1px solid #ffd700;
+      border-radius: 6px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .copy-btn:hover {
+      background-color: gold;
+      color: black;
+    }
+    .back-btn {
+      margin-top: 16px;
+      background: rgba(0,0,0,0.6);
+    }
+    @media (max-width: 500px) {
+      .form-box {
+        padding: 20px;
+        margin: 0 12px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      input, select {
+        font-size: 15px;
+      }
     }
   </style>
 </head>
 <body>
-<audio id="click-sound" src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/Click2.m4a"></audio>
 
 <header>
   <h1>AltheraSMP</h1>
 </header>
 
 <main>
-  <div class="rank-buttons">
-    <button class="rank-btn" onclick="showPopup('Noob')">Rank Noob</button>
-    <button class="rank-btn" onclick="showPopup('Stone')">Rank Stone</button>
-    <button class="rank-btn" onclick="showPopup('Gold')">Rank Gold</button>
-    <button class="rank-btn" onclick="showPopup('Iron')">Rank Iron</button>
-    <button class="rank-btn" onclick="showPopup('Diamond')">Rank Diamond</button>
-    <button class="rank-btn" onclick="showPopup('Legend')">Rank Legend</button>
-    <button class="rank-btn" onclick="showPopup('Fire')">Rank Fire</button>
-    <button class="rank-btn" onclick="showPopup('End')">Rank End</button>
-    <button class="rank-btn" onclick="showPopup('Nether')">Rank Nether</button>
-    <button class="rank-btn" onclick="showPopup('Space')">Rank Space</button>
-    <button class="rank-btn" onclick="showPopup('VIP')">Rank VIP</button>
-  </div>
+  <div class="form-box">
+    <h2>Form Pemesanan Rank</h2>
+    <form id="orderForm">
+      <label for="gamertag">Gamertag</label>
+      <input type="text" id="gamertag" required>
 
-  <div style="text-align: center; margin-top: 10px;">
-    <button class="rank-btn" onclick="window.location.href='page2.html'">← Kembali ke Menu</button>
-  </div>
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" required>
 
-  <div id="overlay" onclick="closePopup()"></div>
-  <div id="popup" class="popup"></div>
+      <label for="nomor">Nomor Pemesanan</label>
+      <input type="text" id="nomor" required>
+
+      <label for="rank">Nama Rank</label>
+      <select id="rank" required onchange="tampilkanHarga()">
+        <option value="">Pilih Rank</option>
+        <option value="Noob">Noob</option>
+        <option value="Stone">Stone</option>
+        <option value="Gold">Gold</option>
+        <option value="Iron">Iron</option>
+        <option value="Diamond">Diamond</option>
+        <option value="Legend">Legend</option>
+        <option value="Fire">Fire</option>
+        <option value="End">End</option>
+        <option value="Nether">Nether</option>
+        <option value="Space">Space</option>
+        <option value="VIP">VIP</option>
+      </select>
+
+      <div id="harga-rank">Harga: -</div>
+
+      <label for="pembayaran">Metode Pembayaran</label>
+      <select id="pembayaran" required onchange="toggleQris()">
+        <option value="">Pilih metode</option>
+        <option value="Dana 083159084210">Dana - 083159084210</option>
+        <option value="Gopay 083159084210">Gopay - 083159084210</option>
+        <option value="Ovo 083159084310">Ovo - 083159084310</option>
+        <option value="QRIS">QRIS</option>
+      </select>
+
+      <div id="copyDanaWrap" style="display: none;">
+        <button type="button" class="copy-btn" onclick="salinDana()">📋 Salin Nomor Dana</button>
+      </div>
+
+      <div class="qris-img" id="qrisImg">
+        <p>Scan QRIS berikut:</p>
+        <img src="https://raw.githubusercontent.com/marcellnw/altherasmp/main/IMG-20250603-WA0145.jpg" alt="QRIS">
+      </div>
+
+      <label for="bukti">Upload Bukti Transfer</label>
+      <input type="file" id="bukti" accept="image/*" required>
+
+      <div class="preview-img" id="preview">
+        <p>Preview:</p>
+        <img id="previewImage">
+      </div>
+
+      <button type="submit" id="submitBtn">Kirim Pesanan</button>
+    </form>
+
+    <button class="back-btn" onclick="window.location.href='rank.html'">← Kembali ke Rank</button>
+  </div>
 </main>
 
 <footer>
   <p>© 2025 AltheraSMP. All rights reserved.</p>
-  <div class="socials" style="margin-top: 10px;">
+  <div class="socials">
     <a href="https://www.instagram.com/queennnzme" target="_blank"><i class="fab fa-instagram"></i></a>
     <a href="https://youtube.com/@queennnzme" target="_blank"><i class="fab fa-youtube"></i></a>
     <a href="https://www.tiktok.com/@queennnzme" target="_blank"><i class="fab fa-tiktok"></i></a>
@@ -181,86 +227,102 @@
 </footer>
 
 <script>
-  const popupData = {
-    Noob: {
-      price: 'Rp5.000',
-      features: ['+feed', '+clear'],
-      items: ['16 roti', '1 totem', '16 iron ingot']
-    },
-    Stone: {
-      price: 'Rp10.000',
-      features: ['+feed', '+clear'],
-      items: ['20 daging', '2 totem', '20 iron ingot', '20 xp bottle']
-    },
-    Gold: {
-      price: 'Rp15.000',
-      features: ['+feed', '+clear', '+heal'],
-      items: ['25 daging', '3 totem', '25 iron ingot', '25 xp bottle', '2 telur villager']
-    },
-    Iron: {
-      price: 'Rp20.000',
-      features: ['+feed', '+clear', '+heal', '+night vision'],
-      items: ['32 daging', '4 totem', '32 iron ingot', '32 xp bottle', '2 telur villager', '2 telur sapi']
-    },
-    Diamond: {
-      price: 'Rp30.000',
-      features: ['+fly', '+feed', '+clear', '+heal', '+night vision'],
-      items: ['40 daging', '5 totem', '40 xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '10 diamond', '10 iron ingot']
-    },
-    Legend: {
-      price: 'Rp45.000',
-      features: ['+fly', '+clear', '+heal', '+feed', '+night vision', '+day', 'Money 25k'],
-      items: ['48 daging', '6 totem', '2 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '16 diamond', '10 iron ingot']
-    },
-    Fire: {
-      price: 'Rp60.000',
-      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+day', '+clear', '+weather', '+night vision', 'Money 50k'],
-      items: ['1 stak daging', '7 totem', '2 stak 32 xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '20 diamond', '10 iron ingot', '10 emerald']
-    },
-    End: {
-      price: 'Rp80.000',
-      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', 'Money 100k'],
-      items: ['1 stak daging', '8 totem', '3 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '25 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 shulker']
-    },
-    Nether: {
-      price: 'Rp100.000',
-      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', '+haste', 'Money 300k'],
-      items: ['1 stak daging', '9 totem', '3 stak 32 xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '32 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 stak enderpearl', '1 shulker']
-    },
-    Space: {
-      price: 'Rp150.000',
-      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', '+haste', '+vanish', 'Money 500k'],
-      items: ['1 stak daging', '10 totem', '4 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '20 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 stak enderpearl', '1 shulker', '1 set armor/tools iron no enchant']
-    },
-    VIP: {
-      price: 'Rp200.000',
-      features: ['+fly', 'unlimited resource', '+feed', '+heal', '+clear', '+night vision', '+day', '+weather', '+enderchest', '+haste', '+vanish', '+xp', 'Money 1M'],
-      items: ['1 stak daging', '10 totem', '5 stak xp bottle', '2 telur villager', '2 telur sapi', '2 telur domba', '1 trident', '1 topi turtle', '16 diamond', '10 iron ingot', '10 emerald', '10 gold ingot', '1 stak enderpearl', '1 shulker', '1 set armor/tools diamond no enchant', '4 pasang telur mob spawner']
-    }
+  const hargaRank = {
+    Noob: "Rp5.000", Stone: "Rp10.000", Gold: "Rp15.000",
+    Iron: "Rp20.000", Diamond: "Rp30.000", Legend: "Rp45.000",
+    Fire: "Rp60.000", End: "Rp80.000", Nether: "Rp100.000",
+    Space: "Rp150.000", VIP: "Rp200.000"
   };
 
-  function showPopup(rank) {
-    document.getElementById('click-sound').play();
-    const data = popupData[rank];
-    let html = `<h3>💎 Rank ${rank}</h3><p>Harga: <strong>${data.price}</strong></p>
-    <div class="popup-content">
-      <div class="popup-section"><h4>⚔️ Benefit Fitur</h4><ul>`;
-    data.features.forEach(f => html += `<li>${f}</li>`);
-    html += `</ul></div><div class="popup-section"><h4>🎁 Benefit Item</h4><ul>`;
-    data.items.forEach(i => html += `<li>${i}</li>`);
-    html += `</ul></div></div>
-      <button onclick="closePopup()">Tutup</button>
-      <button onclick="location.href='form.html?rank=${rank}'">Pesan Sekarang</button>`;
-
-    document.getElementById('popup').innerHTML = html;
-    document.getElementById('popup').style.display = 'block';
-    document.getElementById('overlay').style.display = 'block';
+  function tampilkanHarga() {
+    const rank = document.getElementById('rank').value;
+    document.getElementById('harga-rank').textContent = rank ? `Harga: ${hargaRank[rank]}` : "Harga: -";
   }
 
-  function closePopup() {
-    document.getElementById('popup').style.display = 'none';
-    document.getElementById('overlay').style.display = 'none';
+  function toggleQris() {
+    const pembayaran = document.getElementById('pembayaran').value;
+    document.getElementById('qrisImg').style.display = pembayaran === 'QRIS' ? 'block' : 'none';
+    document.getElementById('copyDanaWrap').style.display = pembayaran.includes('Dana') ? 'block' : 'none';
   }
+
+  function salinDana() {
+    navigator.clipboard.writeText('083159084210').then(() => {
+      alert("✅ Nomor Dana disalin!");
+    });
+  }
+
+  document.getElementById('bukti').addEventListener('change', function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        document.getElementById('previewImage').src = e.target.result;
+        document.getElementById('preview').style.display = 'block';
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
+  document.getElementById('orderForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.textContent = "⏳ Mengirim...";
+    submitBtn.disabled = true;
+
+    const nama = document.getElementById('nama').value;
+    const gamertag = document.getElementById('gamertag').value;
+    const nomor = document.getElementById('nomor').value;
+    const rank = document.getElementById('rank').value;
+    const pembayaran = document.getElementById('pembayaran').value;
+    const buktiFile = document.getElementById('bukti').files[0];
+
+    const webhook = 'https://discord.com/api/webhooks/1387401415831588984/ZPK_TEvECuB6TEiY3bkRkL4p2xqK9IHEEugoYtNbg_loZ4SK-2n2RFvktxYsrHKGrLDl';
+    const uploadForm = new FormData();
+    uploadForm.append('file', buktiFile);
+
+    const uploadRes = await fetch(webhook + '?wait=true', { method: 'POST', body: uploadForm });
+    const resData = await uploadRes.json();
+    const attachmentUrl = resData.attachments?.[0]?.url;
+
+    if (!attachmentUrl) {
+      alert('❌ Gagal mengunggah bukti transfer!');
+      submitBtn.textContent = "Kirim Pesanan";
+      submitBtn.disabled = false;
+      return;
+    }
+
+    const embedPayload = {
+      username: "AltheraSMP Bot",
+      content: "<@755389102307934302> <@1235463607794274354>",
+      allowed_mentions: {
+        users: ["755389102307934302", "1235463607794274354"]
+      },
+      embeds: [{
+        title: "📥 Pemesanan Rank AltheraSMP",
+        color: 16766720,
+        fields: [
+          { name: "🧑 Nama", value: nama, inline: true },
+          { name: "🎮 Gamertag", value: gamertag, inline: true },
+          { name: "🆔 Nomor", value: nomor, inline: true },
+          { name: "💎 Rank", value: `${rank} (${hargaRank[rank]})`, inline: true },
+          { name: "💰 Pembayaran", value: pembayaran, inline: true }
+        ],
+        image: { url: attachmentUrl },
+        footer: { text: "© AltheraSMP" },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(embedPayload)
+    });
+
+    alert("✅ Pesanan berhasil dikirim!");
+    window.location.href = "index.html";
+  });
 </script>
+
 </body>
 </html>
